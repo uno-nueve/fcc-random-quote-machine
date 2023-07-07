@@ -1,6 +1,6 @@
 export const getRandomQuote = async () => {
 
-    let response = await fetch('https://api.quotable.io/quotes/random');
+    const response = await fetch('https://api.quotable.io/quotes/random');
 
     console.log('Response: ', response);
     console.log('Status', response.status);

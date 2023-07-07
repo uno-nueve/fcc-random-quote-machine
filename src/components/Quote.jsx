@@ -1,44 +1,27 @@
-import React, { useState } from 'react';
-import { getRandomQuote } from '../services/fetchService';
+import React from 'react';
+import { Typography } from '@mui/material';
+import { FormatQuote } from '@mui/icons-material';
 
-const Quote = () => {
-    const [quotes, setQuotes] = useState([]);
-
-    const obtainRandomQuote = () => {
-        getRandomQuote()
-            .then((response) => {
-                console.log('Random Quote', response[0]);
-                setQuotes(response);
-            })
-            .catch((error) => {
-                alert(`Error getting random quote: ${error}`);
-            })
-            .finally(() => {
-                console.log('Ended obtaining quotes:');
-                console.table(quotes)
-            })
-    }
+const Quote = ({ quotes }) => {
 
     return (
         <div>
-            {/* Button for testing the API */}
-            <button onClick={() => obtainRandomQuote()}>Get Random Quote</button>
-            <h3>Quote:</h3>
-            {
-                quotes.map((quote, index) => 
-                    (<p key={index}>
-                        { quote.content }
-                    </p>)
-                )
-            }
-            <h5>Author:</h5>
-            {
-                quotes.map((quote, index) =>
-                    (<p key={index}>
-                        { quote.author }
-                    </p>)
-                )
-            }
+            <Typography 
+                id='text' 
+                color='primary'
+                variant='h4'
+                sx={{marginY: 2}}
+            >
+                <FormatQuote fontSize='large' />
+                { quotes.content }
+            </Typography>
+            <Typography  
+                id='author'
+                variant='h5'
+                color='text.secondary'
+            >
+                — { quotes.author }
+            </Typography>
         </div>
     );
 }
