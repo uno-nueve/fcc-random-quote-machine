@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import Quote from '../components/Quote';
+import Footer from '../components/Footer'
 import { Button, createTheme, ThemeProvider, Card, CardContent, CardActions } from '@mui/material';
 import { Autorenew, Twitter } from '@mui/icons-material';
 
@@ -73,6 +74,7 @@ const QuoteBox = () => {
                 </Button>
                     </CardActions>
                 </Card>
+                <Footer />
             </ThemeProvider>
         </div>
     );
